@@ -1,0 +1,15 @@
+{
+    "env": {
+      "commonjs": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 2021,
+      "sourceType": "module" // Agrega esta línea para habilitar el uso de módulos
+    },
+    "rules": {
+      "no-unused-vars": ["error", {"argsIgnorePattern": "next"}]
+    }
+  }
