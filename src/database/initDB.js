@@ -9,21 +9,24 @@ const initDB = async () => {
     console.log('initDB completado.');
 
     await pool.query('USE Sharemylinks');
+    await pool.query(
+      'ALTER TABLE linksVotes DROP FOREIGN KEY linksVotes_ibfk_2'
+    );
+    await pool.query(
+      'ALTER TABLE linksVotes ADD FOREIGN KEY (link_id) REFERENCES links(id) ON DELETE CASCADE'
+    );
 
-    await pool.query('DROP TABLE IF EXISTS linksvotes');
-    await pool.query('DROP TABLE IF EXISTS links');
-    await pool.query('DROP TABLE IF EXISTS users');
     //Verificar si el orden de borrado de tablas es correcto
 
     console.log('Creando tablas');
-    let pool; //  Declara la variable de conexión
+    //  Declara la variable de conexión
 
     try {
-      connection = await getPool(); //  getPool para obtener la conexión
+      pool = await getPool(); //  getPool para obtener la conexión
 
       console.log('Borrando tablas existentes');
 
-      await pool.query('DROP TABLE IF EXISTS linksvotes');
+      await pool.query('DROP TABLE IF EXISTS linksVotes');
       await pool.query('DROP TABLE IF EXISTS links');
       await pool.query('DROP TABLE IF EXISTS users');
 
@@ -64,13 +67,12 @@ const initDB = async () => {
         )
              `);
     } catch (error) {
-      console.error(error);
-    } finally {
-      if (connection) connection.release();
+      console.error('Error al crear las tablas:', error);
     }
   } catch (error) {
-    console.error(error);
+    console.error('Error en initDB:', error);
   } finally {
+    // No uses pool.release() aquí, ya que no es necesario con mysql2/promise
     process.exit();
   }
 };
