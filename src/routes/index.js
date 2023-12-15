@@ -5,7 +5,6 @@ import linksRouter from './linksRouter.js';
 
 const router = express.Router();
 
-//router.use(entriesRouter);
 router.use(userRouter);
 router.use(linksRouter);
 
