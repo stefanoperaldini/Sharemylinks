@@ -22,3 +22,27 @@ export const invalidCredentialsError = () => {
       message: `Credenciales no validas`
   }
 }
+
+export const sendMailError = () => { //error interno del envio del mail
+  throw {
+      httpStatus: 500,//no autorizado
+      code: 'SEND_MAIL_FAILED',
+      message: `Error en el envio del email`
+  }
+}
+
+export const pendignActivationError = () => { //error si no se ha activado el usuario
+  throw {
+      httpStatus: 403,
+      code: 'PENDING_ACTIVATION',
+      message: `Usuario pendiente de activación.`
+  }
+}
+
+export const notAuthenticatedError = () => { //error de autentificacion
+  throw {
+      httpStatus: 401,// autenticacion
+      code: 'NOT_AUTHENTICATED',
+      message: 'Hace falta token por el header "Authorization" '
+  }
+}

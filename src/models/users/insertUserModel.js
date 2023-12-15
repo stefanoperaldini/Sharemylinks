@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import getPool from '../../database/getPool.js';
+import sendMailUtil from '../../util/sendMailUtil.js';
 
 
 import {emailAlReadyRegistratedError} from '../../services/errorService.js';
@@ -17,6 +18,20 @@ const insertUserModel = async (email, password, registrationCode) => {
     if(user.length){
         emailAlReadyRegistratedError();
     }
+
+    const emailSubject = 'Activa tu usuario';
+
+    const emailBody = `
+            !Bienvenid@!
+
+            Gracias por registrarte en Share my links. Para activar tu cuenta haz click en el siguiente enlace:
+
+            <a href="http://localhost:3001/users/validate/${registrationCode}">Activar mi cuenta</a> 
+    ` //insertamos html
+
+    await sendMailUtil(email,emailSubject,emailBody);
+
+
     const hashedPassword = await bcrypt.hash(password,10); 
 
     await pool.query(
