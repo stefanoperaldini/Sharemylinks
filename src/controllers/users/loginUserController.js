@@ -1,9 +1,13 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 
 import selectUserByEmailModel from "../../models/users/selectUserByEmailModel.js";
 
-import { invalidCredentialsError} from '../../services/errorService.js';
+import { 
+    invalidCredentialsError,
+    pendignActivationError} 
+    from '../../services/errorService.js';
 
 const loginUserController = async (req,res,next) => {
     try {
@@ -21,14 +25,26 @@ const loginUserController = async (req,res,next) => {
             invalidCredentialsError();
         }
 
-        /*if(!user.active){
+        if(!user.active){
             pendignActivationError();
-        }*/
+        } //error de que está pendiente de activación
+
+        
+        //generamos el token para usuario
+
+        const tokenInfo = { 
+            id: user.id,
+        };
+
+        const token = jwt.sign(tokenInfo, process.env.SECRET,{
+            expiresIn: '3d' //tiempo de duración del token
+        });
+
 
         res.send({
             status: 'ok',
             data: {
-                token: ''
+                token,
             }
         })
 

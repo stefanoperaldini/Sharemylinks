@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'; //paquete de npm que permite enviar email
 import dotenv from 'dotenv';
 import { sendMailError } from '../services/errorService.js';
 
@@ -15,7 +15,7 @@ const transport = nodemailer.createTransport({ //creamos el tranporte
     }
 });
 
-const sendMailUtil = async (email, subject, body) => {
+const sendMailUtil = async (email, subject, body) => { //email,tema, cuerpo
     try {
         const mailOptions = {
             from: SMTP_USER,
@@ -24,7 +24,7 @@ const sendMailUtil = async (email, subject, body) => {
             text: body
         };
 
-        await transport.sendMail(mailOptions);
+        await transport.sendMail(mailOptions); //esto devuelve una promesa
 
     } catch (error) {
         console.log(error);
