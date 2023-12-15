@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "99f831ab-4f18-42bd-95dc-89e7934e8019",
+		"name": "Sharemylinks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31736744"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "newUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"alberan\",\r\n    \"email\": \"nalbera@hotmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3001/users/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nalbera@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3001/users/login"
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMTE4Mjc3MCwiZXhwIjoxNzAxNDQxOTcwfQ._xdsv1TKDIDd3D-JmjXyyPVoah8tKAdA91fVcXLcHeQ",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3001/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "links",
+			"item": [
+				{
+					"name": "newLink",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMTM0ODc3NywiZXhwIjoxNzAxNjA3OTc3fQ.6Zfunfwfs-s2jjGfWbmunhTV-2Wle9a4Fqw20R8xook",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Paseo por Dinamarca",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "Dinamarca",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Me costo muy caro (nunca lo hice)",
+									"type": "text"
+								},
+								{
+									"key": "img1",
+									"type": "file",
+									"src": "/C:/Users/nalbe/Downloads/037-nyhavn1.jpg"
+								},
+								{
+									"key": "img2",
+									"type": "file",
+									"src": "/C:/Users/nalbe/Downloads/61eea1ccc0269.jpg"
+								},
+								{
+									"key": "img3",
+									"type": "file",
+									"src": "/C:/Users/nalbe/Downloads/descarga.jfif"
+								},
+								{
+									"key": "img4",
+									"type": "file",
+									"src": "/C:/Users/nalbe/Downloads/3080.600x450.jpg"
+								}
+							]
+						},
+						"url": "http://localhost:3001/entries"
+					},
+					"response": []
+				},
+				{
+					"name": "allLinks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3001/entries"
+					},
+					"response": []
+				},
+				{
+					"name": "getLinkById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3001/entries/2"
+					},
+					"response": []
+				},
+				{
+					"name": "voteLink",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMTYzODg2NiwiZXhwIjoxNzAxODk4MDY2fQ.Za500AcCNOci1vdVOFOnYSt1Tv751yth5BOv6WVPF-U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"value\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3001/entries/2/votes"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLink",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTcwMTY5NTUwOSwiZXhwIjoxNzAxOTU0NzA5fQ.SoCcpAkmwGB3w8KfBr2HSOkZ5VNfhtKC0c2AOwOO3XQ",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3001/entries/2/photos/3"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
