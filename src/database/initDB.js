@@ -6,8 +6,6 @@ const initDB = async () => {
 
     console.log('Iniciando initDB...');
 
-    console.log('initDB completado.');
-
     await pool.query('USE Sharemylinks');
     /*await pool.query(
       'ALTER TABLE linksVotes DROP FOREIGN KEY linksVotes_ibfk_2'
@@ -18,7 +16,6 @@ const initDB = async () => {
 
     //Verificar si el orden de borrado de tablas es correcto
 
-    console.log('Creando tablas');
     //  Declara la variable de conexión
 
     try {
@@ -29,6 +26,8 @@ const initDB = async () => {
       await pool.query('DROP TABLE IF EXISTS linksVotes');
       await pool.query('DROP TABLE IF EXISTS links');
       await pool.query('DROP TABLE IF EXISTS users');
+
+      console.log('Creando tablas');
 
       await pool.query(`
         CREATE TABLE users (
@@ -72,7 +71,7 @@ const initDB = async () => {
   } catch (error) {
     console.error('Error en initDB:', error);
   } finally {
-    // No uses pool.release() aquí, ya que no es necesario con mysql2/promise
+    console.log(`Tablas creadas con éxito!`);
     process.exit();
   }
 };
