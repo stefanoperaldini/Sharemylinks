@@ -10,7 +10,7 @@ import voteLinksController from '../controllers/links/voteLinksController.js';
 //comprobamos que nos funciona links
 
 router.get('/links', (req, res) => res.send('Soy el linksRouter, ruta válida'));
-router.get('/entries', listLinksController);
+router.get('/links', listLinksController);
 router.post('/links', newLinkController,authUserController);
 router.post('/links/:link_id/votes', authUserController,voteLinksController)
 
