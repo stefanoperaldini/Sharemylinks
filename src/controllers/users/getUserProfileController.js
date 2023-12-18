@@ -1,25 +1,22 @@
 import selectUserByIdModel from '../../models/users/selectUserByIdModel.js';
 
 const getUserProfileController = async (req, res, next) => {
-    try {
-        const { userId } = req.params;
+  try {
+    const { user_id } = req.params;
 
-        // Obtener información completa del usuario
-        const user = await selectUserByIdModel(userId);
-        
-        //Se elimina la propiedad 'email' del objeto 'user' antes de enviarlo en la respuesta
-        delete user.email;
+    const user = await selectUserByIdModel(user_id);
+    //Borramos email para que no sea visto por otra persona
+    delete user.email;
 
-        res.send({
-            status: 'ok',
-            data: {
-                user,
-            },
-        });
-
-    } catch (error) {
-        next(error);
-    }
+    res.send({
+      status: 'ok',
+      data: {
+        user,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default getUserProfileController;
