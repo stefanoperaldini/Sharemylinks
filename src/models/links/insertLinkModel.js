@@ -1,6 +1,6 @@
 import getPool from '../../database/getPool.js';
 
-const insertLinkModel = async (userId, url, title, description) => {
+const insertLinkModel = async (user_id, url, title, description) => {
   const pool = await getPool();
 
   // Prepara y ejecuta la consulta SQL para insertar un nuevo link
@@ -9,7 +9,7 @@ const insertLinkModel = async (userId, url, title, description) => {
             INSERT INTO links (user_id, url, title, description)
             VALUES (?, ?, ?, ?)
         `,
-    [userId, url, title, description]
+    [user_id, url, title, description]
   );
 
   // Registra el resultado de la inserción (opcional)

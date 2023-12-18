@@ -46,3 +46,21 @@ export const notAuthenticatedError = () => { //error de autentificacion
       message: 'Hace falta token por el header "Authorization" '
   }
 }
+
+export const cannotVoteOwnEntryError = () => {
+  throw {
+      httpStatus: 403,
+      code: 'CANNOT_VOTE_OWN_ERROR',
+      message: 'No puedes votar tu propia entrada'
+  }
+}
+
+
+export const voteAlreadyExistsError = () => {
+  throw {
+      httpStatus: 409,//conflicto
+      code: 'VOTE_ALLREADY_ERROR',
+      message: 'No se puede votar mas de una vez la entrada'
+    }
+  
+}
