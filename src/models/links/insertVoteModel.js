@@ -4,8 +4,6 @@ import { voteAlreadyExistsError } from "../../services/errorService.js";
 const insertVoteModel = async (value, link_id, user_id) => {
     const pool = await getPool();
 
-    //comprobar que si ya existe un voto previo por parte del usuario
-    //para esa entrada -->>> NO PUEDE
 
     const [votes] = await pool.query(
         `
@@ -20,7 +18,7 @@ const insertVoteModel = async (value, link_id, user_id) => {
     //insertamos el voto 
     await pool.query(
         `
-            INSERT INTO entryvotes (value, link_id, user_id)
+            INSERT INTO linksVotes (value, link_id, user_id)
             VALUES (?,?,?)
         `,
         [value, link_id, user_id]
