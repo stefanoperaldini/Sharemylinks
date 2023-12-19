@@ -14,8 +14,8 @@ import {
 
 
 //comprobamos que nos funciona users
-router.get('/users', authUserController, (req, res) => 
-res.send('Soy el userRouter, ruta válida'));
+//router.get('/users', authUserController, (req, res) => 
+//res.send('Soy el userRouter, ruta válida'));
 router.get('/users', authUserController);
 router.get('/users/:user_id', userExistController);
 router.get('/users/validate/:registrationCode', validateUserController)
