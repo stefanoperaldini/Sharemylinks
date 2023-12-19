@@ -6,23 +6,21 @@ import {
 
 const authUserController = (req, res, next) => {
   try {
-    const { authorization } = req.headers;
+    const authHeader = req.headers.authorization;
 
-    if (!authorization) {
-      notAuthenticatedError();
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return notAuthenticatedError(res); // Asegúrate de enviar una respuesta y terminar la ejecución aquí
     }
 
-    let tokenInfo; //si viene el token
+    const token = authHeader.split(' ')[1];
 
     try {
-      tokenInfo = jwt.verify(authorization, process.env.SECRET);
+      const tokenInfo = jwt.verify(token, process.env.SECRET);
+      req.user = tokenInfo;
+      next();
     } catch (error) {
-      invalidCredentialsError();
+      return invalidCredentialsError(res); // Asegúrate de enviar una respuesta y terminar la ejecución aquí
     }
-
-    req.user = tokenInfo;
-
-    next();
   } catch (error) {
     next(error);
   }
@@ -30,4 +28,32 @@ const authUserController = (req, res, next) => {
 
 export default authUserController;
 
-//este authuser lo implementamos también en los links
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

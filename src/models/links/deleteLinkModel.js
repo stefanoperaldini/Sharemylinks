@@ -1,5 +1,3 @@
-// src/models/links/deleteLinkModel.js
-
 import getPool from '../../database/getPool.js';
 
 const deleteLinkModel = async (link_id) => {

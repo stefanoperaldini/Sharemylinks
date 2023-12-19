@@ -1,10 +1,12 @@
 import newLinkController from './newLinkController.js';
-import listLinkController from './listLinkController.js';
-import deleteLinkController from './deleteLinkController.js';
+import listLinksController from './listLinksControlle.js';
+import voteLinkController from './voteLinkController.js';
 import canManageLinkController from './canManageLinkController.js';
-export {
-  newLinkController,
-  listLinkController,
-  deleteLinkController,
-  canManageLinkController,
-};
+import deleteLinkController from './deleteLinkController.js';
+
+
+export { newLinkController,
+listLinksController,
+voteLinkController,
+canManageLinkController,
+deleteLinkController };

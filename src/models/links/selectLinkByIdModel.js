@@ -1,5 +1,3 @@
-// src/models/links/selectLinkByIdModel.js
-
 import getPool from '../../database/getPool.js';
 
 const selectLinkByIdModel = async (link_id) => {
