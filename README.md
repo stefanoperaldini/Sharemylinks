@@ -18,12 +18,15 @@ Borrar un enlace publicado por el usuario
 Votar un enlace de otro usuario
 
 ENDPOINTS
+
 users
 router.post('/users/register', newUserController);
 router.get('/users/validate/:registrationCode', validateUserController)
 router.get('/users', authUserController);
 router.get('/users/:user_id', userExistController, getUserProfileController);
 router.post('/users/login', loginUserController);
+
+
 links
 router.get('/links',authUserController, listLinksController);
 router.post('/links',authUserController,newLinkController);
