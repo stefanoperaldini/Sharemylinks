@@ -51,7 +51,7 @@ export const cannotVoteOwnEntryError = () => {
   throw {
       httpStatus: 403,
       code: 'CANNOT_VOTE_OWN_ERROR',
-      message: 'No puedes votar tu ropio link'
+      message: 'No puedes votar tu propio link'
   }
 }
 

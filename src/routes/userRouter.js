@@ -9,16 +9,21 @@ import {
      } from '../controllers/users/index.js';
 
      import authUserController from '../middlewares/authUserController.js';
-
+     import userExistController from '../middlewares/usersExistController.js';
 
 
 //comprobamos que nos funciona users
-router.get('/users', authUserController, (req, res) => res.send('Soy el userRouter, ruta válida'));
+router.get('/users', authUserController, (req, res) => 
+res.send('Soy el userRouter, ruta válida'));
 
 router.post('/users/register', newUserController);
 router.get('/users/validate/:registrationCode', validateUserController)
+router.get('/users', authUserController);
 
+
+router.get('/users/:user_id', userExistController);
 router.post('/users/login', loginUserController);
+
 
 export default router;
 

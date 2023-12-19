@@ -3,10 +3,11 @@ import selectAllLinksModel from '../../models/links/selectAllLinksModel.js';
 const listLinksController = async (req,res,next) => {
     try {
         
-        const entries = await selectAllLinksModel();
+        const links = await selectAllLinksModel();
 
         res.send({
-            data: entries
+            status:'Ok',
+            data: links
         })
     } catch (error) {
         next(error);

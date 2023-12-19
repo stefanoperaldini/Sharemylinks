@@ -5,14 +5,18 @@ const router = express.Router();
 import authUserController from '../middlewares/authUserController.js'
 
 import { newLinkController,
-listLinksController } from '../controllers/links/index.js';
-import voteLinksController from '../controllers/links/voteLinksController.js';
+listLinksController,
+voteLinkController,
+deleteLinkController,
+} 
+from '../controllers/links/index.js';
+
 //comprobamos que nos funciona links
 
 router.get('/links', (req, res) => res.send('Soy el linksRouter, ruta válida'));
 router.get('/links', listLinksController);
-router.post('/links', newLinkController,authUserController);
-router.post('/links/:link_id/votes', authUserController,voteLinksController)
-
+router.post('/links',authUserController,newLinkController);
+router.post('/links/:link_id/votes', authUserController,voteLinkController);
+router.delete('/links/:link_id',authUserController,deleteLinkController);
 
 export default router;
