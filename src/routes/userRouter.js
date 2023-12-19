@@ -26,5 +26,3 @@ router.post('/users/login', loginUserController);
 
 
 export default router;
-
-

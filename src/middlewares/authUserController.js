@@ -52,80 +52,8 @@ export default authUserController;
 
 
 
-/*import jwt from 'jsonwebtoken';
-import { invalidCredentialsError, notAuthenticatedError } from '../services/errorService.js';
-
-const authUserController = (req, res, next) => {
-  try {
-    const { authorization } = req.headers;
-
-    // Verifica si el encabezado 'Authorization' está presente
-    if (!authorization) {
-      notAuthenticatedError();
-    }
-
-    let tokenInfo;
-
-    try {
-      // Verifica y decodifica el token
-      tokenInfo = jwt.verify(authorization, process.env.SECRET);
-    } catch (error) {
-      invalidCredentialsError();
-    }
-
-    // Verifica si el token contiene la información del usuario
-    if (!tokenInfo || !tokenInfo.user_id) {
-      notAuthenticatedError();
-    }
-
-    // Establece la información del usuario en el objeto de solicitud (req.user)
-    req.user = tokenInfo;
-
-    // Continúa con el siguiente middleware o controlador
-    next();
-  } catch (error) {
-    // Maneja cualquier error y pasa al siguiente middleware de manejo de errores
-    next(error);
-  }
-};
-
-export default authUserController;*/
 
 
 
 
 
-/*import jwt from 'jsonwebtoken';
-import { 
-    invalidCredentialsError,
-    notAuthenticatedError 
-} 
-    from '../services/errorService.js';
-
-
-const authUserController = (req,res,next) => { 
-    try {
-        const { authorization } = req.headers;
-
-        if(!authorization){
-            notAuthenticatedError();
-        }
-
-        let tokenInfo; //si viene el token 
-
-        try {
-            tokenInfo = jwt.verify(authorization, process.env.SECRET);
-        } catch (error) {
-            invalidCredentialsError();
-        }
-
-        req.user = tokenInfo;
-
-        next();
-    } catch (error) {
-        next(error);
-    }
-}
-
-
-export default authUserController;*/
