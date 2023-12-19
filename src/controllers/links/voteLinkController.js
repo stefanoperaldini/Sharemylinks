@@ -6,7 +6,7 @@ const voteLinkController = async (req, res, next) => {
         const { link_id } = req.params;
         const { value } = req.body;
 
-        if (value < 1 || value > 10) {
+        if (value < 1 || value > 5) {
             return res.status(400).json({ message: 'El voto debe estar entre 1 y 5.' });
         }
 
